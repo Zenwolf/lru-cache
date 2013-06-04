@@ -30,6 +30,34 @@ require.config({
 require(['./LRUCache'], function (lrucache) {
     window.lrucache = lrucache;
 
+    function test(val) {
+        console.log(val);
+    }
+
+    window.cache = lrucache.create({ maxSize: 5 });
+
+    cache.size();   // 0
+    cache.hits();   // 0
+    cache.misses(); // 0
+    cache.keys();   // []
+    cache.values(); // []
+
+    cache.put('foo', 42);  // undefined
+    cache.put('bar', 7);   // undefined
+    cache.put('zot', 3);   // undefined
+    cache.put('zam', 9);   // undefined
+    cache.put('grue', 13); // undefined
+
+    cache.keys();           // ["grue", "zam", "zot", "bar", "foo"]
+    cache.get('foo');       // ["foo", grue", "zam", "zot", "bar"]
+    cache.hits();           // 1
+    cache.get('darkSouls'); // undefined
+    cache.misses();         // 1
+
+    cache.forEach(test);    // 42, 13, 9, 3, 7
+
+    cache.put('zork', 100); // 7
+    cache.keys();           // ["zork", foo", grue", "zam", "zot"]
 });
 </script>
 
