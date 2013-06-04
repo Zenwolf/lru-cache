@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+
+<title>LRU Cache Test</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta charset="utf-8">
+
+</head>
+<body>
+
+<script src="./require.js" type="text/javascript"></script>
+<script type="text/javascript">
+
+require.config({
+    baseUrl: '../src/',
+    map: {
+        '*': {
+            './': '../src/'
+        }
+    }
+});
+
+</script>
+
+
+<script type="text/javascript">
+
+require(['./LRUCache'], function (lrucache) {
+    window.lrucache = lrucache;
+
+});
+</script>
+
+</body>
+</html>
